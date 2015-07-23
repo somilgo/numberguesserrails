@@ -10,6 +10,11 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://mynameismatthieu.com/WOW/css/libs/animate.css">
+<script src="http://mynameismatthieu.com/WOW/dist/wow.min.js"></script>
+<script>
+ new WOW().init();
+</script>
 </head>
 
 <body>
@@ -22,15 +27,18 @@
 </div>
 <script>
 	$(document).ready(function(){
+	$('#title').addClass('animated bounceInLeft');
     $('#field').keypress(function(e){
       if(e.keyCode==13)
       $('#sub').click();
+
     });
 });
 </script>
 <div id = "gamebox">
-	<div id = "game">
-		<div id = "message">I'm thinking of a number between 1 and 100...</div><br>
+	<div id = "game" class = "wow bounceIn">
+		<div id = "message">I'm thinking of a number between 1 and 100...</div>
+		<div id = "hilo"></div><br>
 		<input id = "field" type="number" placeholder="What's your Guess?"></input>
 		<br>
 		<button id = "sub" class = "btn btn-primary" type="submit" onclick="run()">Guess!</button>
@@ -43,7 +51,8 @@
 				var opacityy = 0;
 				while(opacityy < 1)
 				{
-					opacityy = opacityy + 0.001;
+					opacityy = opacityy + 0.01;
+					//alert("test");
 					thing.style.opacity = opacityy;
 				}
 				
@@ -54,49 +63,55 @@
 				var txtbox = document.getElementById("field");
 				var guess = txtbox.value;
 				txtbox.value= "";
-				if (guess == "")
+				if (guess == null || guess=="")
 				{
+					document.getElementById("hilo").style.opacity = 0;
+					document.getElementById("message").style.opacity = 1;
 					document.getElementById("message").style.fontSize = "6vw";
 					document.getElementById("message").innerHTML = "Please input a valid integer...";
 				}
 				if (done==1)
 				{
+					document.getElementById("hilo").style.opacity = 0;
+					document.getElementById("message").style.opacity = 1;
 					document.getElementById("message").innerHTML = "I'm thinking of a number between 1 and 100...";
 		    		document.getElementById("message").style.fontSize = "6vw";
 		    		number = Math.floor((Math.random() * 100) + 1);
 		    		done = 0;
 		    		count = 0;
+		    		document.getElementById("sub").innerHTML = "Guess!";
 				}
 				
 				else if (number < guess)
 				{
-					document.getElementById("message").innerHTML = "...";
 					document.getElementById("message").style.opacity = 0;
-					document.getElementById("message").innerHTML = "Lower...";
+					document.getElementById("hilo").innerHTML = "Lower...";
+
 					
-		    		document.getElementById("message").style.fontSize = "10vw";
-		    		if (document.getElementById("message")) {
-    					setTimeout( function() { fade(document.getElementById("message")); }, 400);
+		    		document.getElementById("hilo").style.fontSize = "10vw";
+		    		if (document.getElementById("hilo")) {
+    					setTimeout( function() { fade(document.getElementById("hilo")); }, 400);
 					}
 
 
 				}
 				else if (number > guess)
 				{
-					document.getElementById("message").innerHTML = "...";
-					var now = new Date().getTime();
     				
     				document.getElementById("message").style.opacity = 0;
-					document.getElementById("message").innerHTML = "Higher...";
+					document.getElementById("hilo").innerHTML = "Higher...";
+
 					
-		    		document.getElementById("message").style.fontSize = "10vw";
-		    		if (document.getElementById("message")) {
-    					setTimeout( function() { fade(document.getElementById("message")); }, 400);
+		    		document.getElementById("hilo").style.fontSize = "10vw";
+		    		if (document.getElementById("hilo")) {
+    					setTimeout( function() { fade(document.getElementById("hilo")); }, 400);
 					}
 
 				}
 		    	else if (number == guess)
 		    	{
+		    		document.getElementById("hilo").style.opacity = 0;
+		    		document.getElementById("message").style.opacity = 1;
 					document.getElementById("message").innerHTML = "Correct in " + count + " tries! <br>It was " + number + "!";
 		    		document.getElementById("message").style.fontSize = "7vw";
 		    		done = 1;
@@ -104,6 +119,7 @@
 		    	}
 		    	else
 				{
+					document.getElementById("hilo").style.opacity = 0;
 					document.getElementById("message").innerHTML = "Something's wrong!";
 		    		document.getElementById("message").style.fontSize = "10vw";
 		    	}

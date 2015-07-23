@@ -68,6 +68,7 @@ br {
 	width: 80%;
 	height: 80%;
 	box-shadow: 0 10px 100px black;
+	border-radius: 20px;
 }
 
 
@@ -76,6 +77,12 @@ br {
 {
 	margin-top: 20px;
 	opacity: 1;
+	line-height: 100px;
+}
+
+#hilo
+{
+	margin-top: -19%;
 }
 
 #field
@@ -87,7 +94,60 @@ br {
 	top: 50%;
 	position: absolute;
 	right: 15%;
+	border-radius: 7px;
+	transform:translate(-0%,0%);
+    -webkit-transform:translate(-0%,-0%);
 }
+
+input::-webkit-input-placeholder {
+    color: #CCCCCC;
+    position:relative;
+    padding-left:0;
+    -webkit-transition: padding 0.5s;
+    /* For Safari 3.1 to 6.0 */
+    transition: padding 0.5s;
+}
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #CCCCCC;
+    position:relative;
+    padding-left:0;
+    -moz-transition: padding 0.5s;
+    /* For Safari 3.1 to 6.0 */
+    transition: padding 0.5s;
+}
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #CCCCCC;
+    position:relative;
+    padding-left:0;
+    -moz-transition: padding 0.5s;
+    /* For Safari 3.1 to 6.0 */
+    transition: padding 0.5s;
+}
+input:-ms-input-placeholder {
+    color: #CCCCCC;
+    position:relative;
+    padding-left:0;
+    -ms-transition: padding 0.5s;
+    /* For Safari 3.1 to 6.0 */
+    transition: padding 0.5s;
+}
+input:hover::-webkit-input-placeholder, input:focus::-webkit-input-placeholder {
+    padding-left:100%;
+}
+input:hover:-moz-placeholder, input:focus:-moz-placeholder {
+    /* Firefox 18- */
+    padding-left:100%;
+}
+input:hover::-moz-placeholder, input:focus::-moz-placeholder {
+    /* Firefox 19+ */
+    padding-left:100%;
+}
+input:hover:-ms-input-placeholder, input:focus:-ms-input-placeholder {
+    padding-left:100%;
+}
+
 #sub
 {
 	font-size: 4vw;
@@ -97,4 +157,5 @@ br {
 	width: 30%;
 	margin: auto;
 	right:35%;
+	border-radius: 7px;
 }
