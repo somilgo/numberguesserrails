@@ -1,12 +1,92 @@
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800,700,400,600' rel='stylesheet' type='text/css'>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
-<p id="notice"><%= notice %></p>
 
 <body>
 
-<h1>Welcome!</h1>
+<div id = "main">
 
-Hello World!
+</div>
+<div id = "title">
+	The Number </br>Guesser
+</div>
+<script>
+	$(document).ready(function(){
+    $('#field').keypress(function(e){
+      if(e.keyCode==13)
+      $('#sub').click();
+    });
+});
+</script>
+<div id = "gamebox">
+	<div id = "game">
+		<span id = "message">I'm thinking of a number between 1 and 100...</span><br>
+		<input id = "field" type="number" placeholder="What's your Guess?"></input>
+		<br>
+		<button id = "sub" class = "btn btn-primary" type="submit" onclick="run()">Guess!</button>
+		<script>
+			var number = Math.floor((Math.random() * 100) + 1)
+			var done = 0;
+			function run() 
+			{
+				var txtbox = document.getElementById("field");
+				var guess = txtbox.value;
+				txtbox.value= "";
+				if (guess == "")
+				{
+					document.getElementById("message").style.fontSize = "6vw";
+					document.getElementById("message").innerHTML = "Please input a valid integer...";
+				}
+				if (done==1)
+				{
+					document.getElementById("message").innerHTML = "I'm thinking of a number between 1 and 100...";
+		    		document.getElementById("message").style.fontSize = "6vw";
+		    		number = Math.floor((Math.random() * 100) + 1);
+		    		done = 0;
+				}
+				
+				else if (number < guess)
+				{
+					document.getElementById("message").innerHTML = "...";
+					var now = new Date().getTime();
+    				while(new Date().getTime() < now + 400){ /* do nothing */ }
+					document.getElementById("message").innerHTML = "Lower...";
+		    		document.getElementById("message").style.fontSize = "10vw";
+
+				}
+				else if (number > guess)
+				{
+					document.getElementById("message").innerHTML = "...";
+					var now = new Date().getTime();
+    				while(new Date().getTime() < now + 400){ /* do nothing */ } 
+					document.getElementById("message").innerHTML = "Higher...";
+		    		document.getElementById("message").style.fontSize = "10vw";
+				}
+		    	else if (number == guess)
+		    	{
+					document.getElementById("message").innerHTML = "Correct! <br>It was " + number + "!";
+		    		document.getElementById("message").style.fontSize = "7vw";
+		    		done = 1;
+		    		document.getElementById("sub").innerHTML = "Play Again";
+		    	}
+		    	else
+				{
+					document.getElementById("message").innerHTML = "Something's wrong!";
+		    		document.getElementById("message").style.fontSize = "10vw";
+		    	}
+			}
+			
+		</script>
+	</div>
+</div>
 <body>
 </html>
