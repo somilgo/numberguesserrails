@@ -38,6 +38,16 @@
 			var number = Math.floor((Math.random() * 100) + 1)
 			var done = 0;
 			var count = 0;
+			function fade(thing)
+			{
+				var opacityy = 0;
+				while(opacityy < 1)
+				{
+					opacityy = opacityy + 0.001;
+					thing.style.opacity = opacityy;
+				}
+				
+			}
 			function run() 
 			{
 				count ++;
@@ -61,19 +71,29 @@
 				else if (number < guess)
 				{
 					document.getElementById("message").innerHTML = "...";
-					var now = new Date().getTime();
-    				while(new Date().getTime() < now + 400){ /* do nothing */ }
+					document.getElementById("message").style.opacity = 0;
 					document.getElementById("message").innerHTML = "Lower...";
+					
 		    		document.getElementById("message").style.fontSize = "10vw";
+		    		if (document.getElementById("message")) {
+    					setTimeout( function() { fade(document.getElementById("message")); }, 400);
+					}
+
 
 				}
 				else if (number > guess)
 				{
 					document.getElementById("message").innerHTML = "...";
 					var now = new Date().getTime();
-    				while(new Date().getTime() < now + 400){ /* do nothing */ } 
+    				
+    				document.getElementById("message").style.opacity = 0;
 					document.getElementById("message").innerHTML = "Higher...";
+					
 		    		document.getElementById("message").style.fontSize = "10vw";
+		    		if (document.getElementById("message")) {
+    					setTimeout( function() { fade(document.getElementById("message")); }, 400);
+					}
+
 				}
 		    	else if (number == guess)
 		    	{
