@@ -37,8 +37,10 @@
 		<script>
 			var number = Math.floor((Math.random() * 100) + 1)
 			var done = 0;
+			var count = 0;
 			function run() 
 			{
+				count ++;
 				var txtbox = document.getElementById("field");
 				var guess = txtbox.value;
 				txtbox.value= "";
@@ -53,6 +55,7 @@
 		    		document.getElementById("message").style.fontSize = "6vw";
 		    		number = Math.floor((Math.random() * 100) + 1);
 		    		done = 0;
+		    		count = 0;
 				}
 				
 				else if (number < guess)
@@ -74,7 +77,7 @@
 				}
 		    	else if (number == guess)
 		    	{
-					document.getElementById("message").innerHTML = "Correct! <br>It was " + number + "!";
+					document.getElementById("message").innerHTML = "Correct in " + count + " tries! <br>It was " + number + "!";
 		    		document.getElementById("message").style.fontSize = "7vw";
 		    		done = 1;
 		    		document.getElementById("sub").innerHTML = "Play Again";
