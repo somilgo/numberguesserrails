@@ -1,3 +1,5 @@
 == README
 
 This is my very first Ruby on Rails app. Just a simple number guesser using javascript and jquery. Learned to use Ruby on Rails through a course at the Pennsylvania Governor School for the Sciences. 
+
+http://somilsite.herokuapp.com
